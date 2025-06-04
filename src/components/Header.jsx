@@ -7,7 +7,7 @@ import { LoginContext } from "../contexts/LoginContext";
 
 const Header = () => {
 
-    const { logado } = useContext(LoginContext);
+    const { logado, usuario } = useContext(LoginContext);
 
     return (
         <header>
@@ -21,8 +21,16 @@ const Header = () => {
                     <img src={lupa} alt="lupa" />
                 </div>
                 <div className="acoes">
-                    <a href="">Cadastre-se</a>
-                    <a href="/auth" className="btn">Entrar</a>
+                    {
+                        usuario.usuario_nome ? (
+                            <h3>{usuario.usuario_nome}</h3>
+                        ) : (
+                            <>
+                                <a href="">Cadastre-se</a>
+                                <a href="/auth" className="btn">Entrar</a>
+                            </>
+                        )
+                    }
                     <div className="carrinho">
                         <img src={carrinho} alt="carrinho" />
                         <span>2</span>
